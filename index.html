@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/knorr.png" type="image/png" >  
+  <title>Van Terminal System</title>
+  <link rel="stylesheet" href="scrollStyle.css">
+  <link rel="stylesheet" href="login.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+
+<body>
+ <!-- Hero Section -->
+ <section class="hero">
+  <!-- Video background element -->
+  <video autoplay muted loop playsinline class="hero-video">
+    <source src="img/vidTara.mp4" type="video/mp4">
+    <!-- Fallback image if video doesn't load -->
+    <img src="img/404.png" alt="Background">
+  </video>
+  <div class="hero-content">
+    <h2>San ka punta?</h2>
+    <div class="changing-text"></div>
+    <div class="line"></div>
+    <p>"Miss mona ba? I-travel mo nalang yan!"</p>
+
+    <!-- <p>"Sit back, relax and let your journey begins!"</p> -->
+  </div>
+</section>
+
+
+
+<header>
+  <div class="logo">
+    <!-- Two different logo images - one for top state, one for scrolled -->
+    <h1>
+      <img src="img/VanTasticWhite.png" alt="Van Terminal System" class="logo-top">
+      <img src="img/VanTastic.png" alt="Van Terminal System" class="logo-scrolled">
+    </h1>
+  </div>
+  <!-- Hamburger Icon for Mobile -->
+  <div class="menu-toggle" id="mobile-menu">
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </div>
+  <!-- Navigation Menu -->
+  <nav id="nav-menu">
+    <ul>
+      <li><a href="#book-seat">LOGIN / REGISTER</a></li>
+      <li><a href="#routes">ROUTES</a></li>
+      <li><a href="#fare">FARE</a></li>
+      <li><a href="#organization">ORGANAZATION</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+      <li><a href="customer-dashboard.html">customer</a></li>
+      <li><a href="manager.html">manager</a></li>
+      <li><a href="admin.html">admin</a></li>
+    </ul>
+  </nav>
+</header>
+
+
+
+
+
+  <!-- This is bugged bruh -->
+<div id="book-seat"></div>
+
+  <!-- sendo -->
+  <section class="api-power-section" data-animate="animate-fadeInLeft">
+    <div class="content-left">
+        <div class="section-header">
+            <h1>Booking</h1>
+            <p>"On-time guaranteed—your journey starts and ends as planned."</p>
+        </div>
+        
+        <div class="options">
+          <div class="option" data-modal="login-modal">
+              <h3>Book Now!</h3>
+          </div>
+          <div class="option" data-modal="register-modal">
+              <h3>Be one of us!</h3>
+          </div>
+      </div>
+    </div>
+    
+    <div class="image-right"  data-animate="animate-fadeInRight">
+        <div class="svg-container">
+            <!-- SVG content would go here -->
+        </div>
+    </div>
+</section>
+
+
+<!-- Add no-snap class to non-section elements -->
+<div class="slider no-snap" reverse="true" style="
+--width: 250px;
+--height: 50px;
+--quantity: 10;
+">
+ <!-- Slide -->
+ <div class="slider" reverse="true" style="
+ --width: 250px;
+ --height: 50px;
+ --quantity: 10;
+ ">
+     <div class="list">
+       <div class="item" style="--position: 1"><img src="img/safe.png" alt=""></div>
+       <div class="item" style="--position: 2"><img src="img/caution.png" alt=""></div>
+       <div class="item" style="--position: 3"><img src="img/caution.png" alt=""></div>
+       <div class="item" style="--position: 4"><img src="img/caution.png" alt=""></div>
+       <div class="item" style="--position: 5"><img src="img/caution.png" alt=""></div>
+       <div class="item" style="--position: 6"><img src="img/caution.png" alt=""></div>
+       <div class="item" style="--position: 7"><img src="img/caution.png" alt=""></div>
+       <div class="item" style="--position: 8"><img src="img/caution.png" alt=""></div>
+       <div class="item" style="--position: 9"><img src="img/caution.png" alt=""></div>
+       <div class="item" style="--position: 10"><img src="img/caution.png" alt=""></div>
+     </div>
+   </div>
+</div>
+
+  
+
+
+  <section id="routes" class="section" >
+    <h2>Routes and Maps</h2>
+    <div class="map-routes" data-animate="animate-fadeInLeft">
+      <div id="map1" class="map"></div>
+      <div class="route-details">
+        <h3>Manila to Infanta Route 1</h3>
+        
+        <div class="route-cards map1-cards">
+          <div class="route-card" data-coords="14.602251104020425,120.99784405714034">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="route-info">
+              <h4>Manila Terminal</h4>
+            </div>
+          </div>
+          <div class="route-card" data-coords="14.60128470311564,120.99791328610357">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="route-info">
+              <h4>Sta. Teresita</h4>
+            </div>
+          </div>
+          <div class="route-card" data-coords="14.600878809564579,120.9951455358591">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="route-info">
+              <h4>Legarda</h4>
+            </div>
+          </div>
+          <div class="route-card" data-coords="14.6019,121.0358">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="route-info">
+              <h4>San Juan</h4>
+            </div>
+          </div>
+          <div class="route-card" data-coords="14.676,121.0437">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="route-info">
+              <h4>Quezon City</h4>
+            </div>
+          </div>
+          <div class="route-card" data-coords="14.65,121.1">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="route-info">
+              <h4>Marikina</h4>
+            </div>
+          </div>
+          <div class="route-card" data-coords="14.6181,121.1189">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="route-info">
+              <h4>Masinag</h4>
+            </div>
+          </div>
+          <div class="route-card" data-coords="14.5842,121.1764">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="route-info">
+              <h4>Antipolo</h4>
+            </div>
+          </div>
+          <div class="route-card" data-coords="14.5586,121.2086">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="route-info">
+              <h4>Teresa</h4>
+            </div>
+          </div>
+          <div class="route-card" data-coords="14.5119,121.2397">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="route-info">
+              <h4>Morong</h4>
+            </div>
+          </div>
+          <div class="route-card" data-coords="14.5214,121.2658">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="route-info">
+              <h4>Baras</h4>
+            </div>
+          </div>
+          <div class="route-card" data-coords="14.4964,121.2864">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="route-info">
+              <h4>Tanay</h4>
+            </div>
+          </div>
+          <div class="route-card" data-coords="14.444607821683023,121.34220707331515">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="route-info">
+              <h4>Pililla</h4>
+            </div>
+          </div>
+          <div class="route-card" data-coords="14.433157754603998,121.41244274456479">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="route-info">
+              <h4>Mabitac</h4>
+            </div>
+          </div>
+          <div class="route-card" data-coords="14.472310574438941,121.48297008748946">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="route-info">
+              <h4>Famy</h4>
+            </div>
+          </div>
+          <div class="route-card" data-coords="14.615303355399515,121.59666223610522">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="route-info">
+              <h4>Real</h4>
+            </div>
+          </div>
+          <div class="route-card" data-coords="14.74565752572017,121.64995623922678">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="route-info">
+              <h4>Infanta</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <br>
+    
+      <!-- Second Map and Routes -->
+      <div class="map-routes" data-animate="animate-fadeInRight">
+        
+        <div class="route-details">
+          <h3>Manila to Infanta Route 2</h3>
+
+          
+          <div class="route-cards map2-cards">
+            <div class="route-card" data-coords="14.74565752572017,121.64995623922678">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="route-info">
+                <h4>Infanta</h4>
+              </div>
+            </div>
+            <div class="route-card" data-coords="14.602222511881717,120.99771993966442">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="route-info">
+                <h4>Sampaloc Manila Terminal</h4>
+              </div>
+            </div>
+            <div class="route-card" data-coords="14.6633,121.6044">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="route-info">
+                <h4>Real</h4>
+              </div>
+            </div>
+            <div class="route-card" data-coords="14.6633,121.6044">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="route-info">
+                <h4>Real</h4>
+              </div>
+            </div>
+            <div class="route-card" data-coords="14.6633,121.6044">
+              <i class="fas fa-map-marker-alt"></i>
+              <div class="route-info">
+                <h4>Real</h4>
+              </div>
+            </div>
+            <!-- Add more cards here -->
+          </div>
+        </div>
+        <div id="map2" class="map"></div>
+      </div>
+    </div>
+     <!-- fare -->
+     <section id="fare" class="section" data-animate="animate-fadeIn">
+      <h2>Fare Details</h2>
+      <div class="fare-container">
+        <div class="fare-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Passenger Type</th>
+                <th>Fare (PHP)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Average Fare</td>
+                <td>₱350</td>
+              </tr>
+              <tr>
+                <td>Student Fare</td>
+                <td>₱320</td>
+              </tr>
+              <tr>
+                <td>Senior Fare</td>
+                <td>₱320</td>
+              </tr>
+              <tr>
+                <td>PWD (Persons with Disabilities)</td>
+                <td>₱320</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    
+        <div class="fare-info">
+          <h3>Additional Information</h3>
+          <p>
+            Our fares are designed to be affordable and inclusive for all passengers. Discounts are available for students, senior citizens, and persons with disabilities. Please ensure you carry valid identification to avail of these discounts.
+          </p>
+        </div>
+      </div>
+    </section>
+  </section>
+
+
+<!-- Top Level - 2 Boxes -->
+<!-- Organization Chart Section -->
+<section id="organization" class="section" data-animate="animate-fadeInUp">
+  <h2>Our Leadership Team</h2>
+  <p class="org-description">Meet the dedicated team driving our mission to provide exceptional service and ensure your journey is seamless and comfortable.</p>
+  
+  <!-- Top Level - 2 Boxes -->
+  <div class="org-level top-level">
+    <div class="org-node">
+      <div class="org-person">
+        <i class="fas fa-user-tie"></i>
+        <p><strong>Jimmy</strong></p>
+        <p>President</p>
+      </div>
+    </div>
+    <div class="org-node">
+      <div class="org-person">
+        <i class="fas fa-user-tie"></i>
+        <p><strong>Jonathan</strong></p>
+        <p>Vice-President</p>
+      </div>
+    </div>
+  </div>
+  <br>
+  
+  <!-- Middle Level - 4 Boxes -->
+  <div class="org-level middle-level">
+    <div class="org-node">
+      <div class="org-person">
+        <i class="fas fa-user-tie"></i>
+        <p><strong>Noel</strong></p>
+        <p>BOD</p>
+      </div>
+    </div>
+    <div class="org-node">
+      <div class="org-person">
+        <i class="fas fa-user-tie"></i>
+        <p><strong>Nathan</strong></p>
+        <p>BOD</p>
+      </div>
+    </div>
+    <div class="org-node">
+      <div class="org-person">
+        <i class="fas fa-user-tie"></i>
+        <p><strong>Norman</strong></p>
+        <p>BOD</p>
+      </div>
+    </div>
+    
+  </div>
+  <br>
+  
+  <!-- Bottom Level - 4 Boxes -->
+  <div class="org-level bottom-level">
+    <div class="org-node">
+      <div class="org-person">
+        <i class="fas fa-user-tie"></i>
+        <p><strong>Jornel</strong></p>
+        <p>BOD</p>
+      </div>
+    </div>
+    <div class="org-node">
+      <div class="org-person">
+        <i class="fas fa-user-tie"></i>
+        <p><strong>Ruth</strong></p>
+        <p>Treasurer</p>
+      </div>
+    </div>
+    <div class="org-node">
+      <div class="org-person">
+        <i class="fas fa-user-tie"></i>
+        <p><strong>Arlene</strong></p>
+        <p>Secretary</p>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+
+ <!-- Contact Section -->
+<section id="contact" class="section" data-animate="animate-fadeIn">
+  <h2>Contact Us</h2>
+  <div class="contact-container">
+    <div class="contact-info">
+      <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <div>
+          <p><strong>Address</strong></p>
+          <p>Infanta: 02-A 20 de Julio St., Poblacion 38, Infanta, Quezon</p>
+          <p>Manila: #0275 (A) Sta. Teresita, Sampaloc Terminal / REINNAVVODAI</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-phone"></i>
+        <div>
+          <p><strong>Phone</strong></p>
+          <p>Infanta: 09610211441  |  (042) 373-5022</p>
+          <p>Manila: (Globe) 09674062207 | (Smart) 09286588163</p>
+        </div>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-envelope"></i>
+        <div>
+          <p><strong>Email</strong></p>
+          <p>info@idk.com</p>
+        </div>
+      </div>
+    </div>
+    <div class="contact-links">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+</section>
+
+
+ <!-- Login Modal -->
+<div id="login-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h2>Login</h2>
+    <form id="login-form" method="post" action="login.php">
+      <input type="email" placeholder="Email" required>
+      <div class="password-container">
+        <input type="password" id="login-password" placeholder="Password" required>
+        <span class="show-password" onclick="togglePassword('login-password')">
+          <i class="fas fa-eye"></i>
+        </span>
+      </div>
+      <button type="submit">Login <i class="fas fa-sign-in-alt"></i></button>
+    </form>
+    <div class="modal-footer">
+      <p><a href="#" id="forgot-password-link">Forgot Password?</a></p>
+    </div>
+  </div>
+</div>
+
+<!-- Register Modal -->
+<div id="register-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-modal">&times;</span>
+    <h2>Register</h2>
+    <form id="register-form">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email" required>
+    
+      <div class="password-container">
+        <input type="password" id="register-password" placeholder="Password" required>
+        <span class="show-password" onclick="togglePassword('register-password', this)">
+          <i class="fas fa-eye"></i>
+        </span>
+      </div>
+    
+      <div class="password-container">
+        <input type="password" id="confirm-password" placeholder="Confirm Password" required>
+        <span class="show-password" onclick="togglePassword('confirm-password', this)">
+          <i class="fas fa-eye"></i>
+        </span>
+      </div>
+    
+      <button type="submit">Register <i class="fas fa-user-plus"></i></button>
+    </form>
+    <div class="modal-footer">
+
+    </div>
+  </div>
+</div>
+</section>
+
+
+  <!-- Leaflet CSS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<!-- Leaflet JavaScript -->
+ <script src="menuxxx.js"></script>
+  <script src="script.js"></script>
+  <script src="routes.js"></script>
+  <script src="scrollAnimate.js"></script>
+
+</body>
+
+</html>

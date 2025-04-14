@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/knorr.png" type="image/png" >  
+  <title>Manager Dashboard | VanTastic</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="manager.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="img/VanTasticWhite.png" alt="VanTastic Logo">
+      </div>
+
+      <ul class="sidebar-menu">
+        <li><a href="#" class="active" data-section="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+        <li><a href="#" data-section="van-management"><i class="fas fa-van-shuttle"></i> Van Management</a></li>
+        <li><a href="#" data-section="customer-management"><i class="fas fa-users"></i> Customer Management</a></li>
+        <li><a href="#" data-section="reports"><i class="fas fa-chart-line"></i> Reports</a></li>
+        <li><a href="#" data-section="settings"><i class="fas fa-cog"></i> Settings</a></li>
+      </ul>
+
+      <button class="logout-btn" id="logout-btn">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </button>
+    </aside>
+
+    <main class="main-content">
+      <!-- Dashboard Section -->
+      <section id="dashboard" class="dashboard-section active">
+        <div class="dashboard-header">
+            <h2>Ticket Management</h2>
+            <div class="filter-controls">
+              <div class="search-bar">
+                <input type="text" id="ticket-search" placeholder="Search tickets...">
+                <button id="search-tickets"><i class="fas fa-search"></i></button>
+              </div>
+              <div class="filter-group">
+                <label for="status-filter">Status:</label>
+                <select id="status-filter">
+                  <option value="all">All Statuses</option>
+                  <option value="completed">Completed</option>
+                  <option value="upcoming">Upcoming</option>
+                  <option value="cancelled">Cancelled</option>
+                </select>
+              </div>
+              <div class="filter-group">
+                <label for="date-filter">Date Range:</label>
+                <select id="date-filter">
+                  <option value="all">All Dates</option>
+                  <option value="today">Today</option>
+                  <option value="week">This Week</option>
+                  <option value="month">This Month</option>
+                  <option value="past">Past Tickets</option>
+                  <option value="future">Future Tickets</option>
+                </select>
+              </div>
+              <button class="btn btn-secondary" id="reset-filters">
+                <i class="fas fa-sync-alt"></i> Reset
+              </button>
+            </div>
+          </div>
+        
+
+        <div class="stats-container">
+          <div class="stat-card">
+            <h3>Completed Tickets</h3>
+            <div class="value">248</div>
+          </div>
+          <div class="stat-card">
+            <h3>Upcoming Tickets</h3>
+            <div class="value">36</div>
+          </div>
+          <div class="stat-card">
+            <h3>Cancelled Tickets</h3>
+            <div class="value">12</div>
+          </div>
+        </div>
+
+        <div class="data-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Ticket #</th>
+                <th>Customer</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Date</th>
+                <th>Status</th>
+                <th>Van Status</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>VT2023-0015</td>
+                <td>Juan Dela Cruz</td>
+                <td>Manila</td>
+                <td>Quezon City</td>
+                <td>Jun 15, 2023</td>
+                <td><span class="status-badge status-completed">Completed</span></td>
+                <td>Arrived</td>
+                <td>
+                  <select class="action-dropdown" disabled>
+                    <option>Completed</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td>VT2023-0016</td>
+                <td>Maria Santos</td>
+                <td>Quezon City</td>
+                <td>Sta. Mesa</td>
+                <td>Jun 18, 2023</td>
+                <td><span class="status-badge status-upcoming">Upcoming</span></td>
+                <td>On the way</td>
+                <td>
+                  <select class="action-dropdown">
+                    <option>Upcoming</option>
+                    <option>Completed</option>
+                    <option>Cancelled</option>
+                  </select>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+     <!-- Van Management Section -->
+     <section id="van-management" class="dashboard-section">
+        <div class="dashboard-header">
+          <h2>Van Management</h2>
+          <button class="btn btn-primary" id="add-van-btn">
+            <i class="fas fa-plus"></i> Add New Van
+          </button>
+        </div>
+
+        <div class="van-form" id="van-form" style="display: none;">
+          <h3><span id="form-title">Add</span> Van</h3>
+          <input type="hidden" id="van-edit-id">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="van-id">Van ID</label>
+              <input type="text" id="van-id" placeholder="VAN001">
+            </div>
+            <div class="form-group">
+              <label for="van-plate">License Plate</label>
+              <input type="text" id="van-plate" placeholder="ABC 1234">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="van-model">Model</label>
+              <input type="text" id="van-model" placeholder="Toyota HiAce">
+            </div>
+            <div class="form-group">
+              <label for="van-capacity">Passenger Capacity</label>
+              <input type="number" id="van-capacity" placeholder="12">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="van-status">Status</label>
+              <select id="van-status">
+                <option value="active">Active</option>
+                <option value="maintenance">Maintenance</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="van-driver">Assigned Driver</label>
+              <input type="text" id="van-driver" placeholder="Driver Name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="van-notes">Notes</label>
+            <textarea id="van-notes" rows="3" placeholder="Any special notes..."></textarea>
+          </div>
+          <div class="form-actions">
+            <button class="btn btn-primary" id="save-van-btn">
+              <i class="fas fa-save"></i> Save Van
+            </button>
+            <button class="btn btn-secondary" id="cancel-van-btn">
+              <i class="fas fa-times"></i> Cancel
+            </button>
+          </div>
+        </div>
+
+        <div class="stats-container">
+          <div class="stat-card">
+            <h3>Active Vans</h3>
+            <div class="value">15</div>
+          </div>
+          <div class="stat-card">
+            <h3>In Maintenance</h3>
+            <div class="value">3</div>
+          </div>
+          <div class="stat-card">
+            <h3>Available Today</h3>
+            <div class="value">12</div>
+          </div>
+        </div>
+
+        <div class="data-table">
+          <table id="vans-table">
+            <thead>
+              <tr>
+                <th>Van ID</th>
+                <th>License Plate</th>
+                <th>Model</th>
+                <th>Capacity</th>
+                <th>Status</th>
+                <th>Driver</th>
+                <th>Last Maintenance</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-van-id="VAN001">
+                <td>VAN001</td>
+                <td>ABC 1234</td>
+                <td>Toyota HiAce</td>
+                <td>12</td>
+                <td><span class="status-badge status-active">Active</span></td>
+                <td>Juan Dela Cruz</td>
+                <td>2023-05-15</td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="btn btn-secondary btn-sm edit-van-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm delete-van-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr data-van-id="VAN002">
+                <td>VAN002</td>
+                <td>XYZ 5678</td>
+                <td>Nissan Urvan</td>
+                <td>14</td>
+                <td><span class="status-badge status-maintenance">Maintenance</span></td>
+                <td>-</td>
+                <td>2023-06-01</td>
+                <td>
+                  <div class="action-buttons">
+                    <button class="btn btn-secondary btn-sm edit-van-btn">
+                      <i class="fas fa-edit"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm delete-van-btn">
+                      <i class="fas fa-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Other sections would go here -->
+      <section id="customer-management" class="dashboard-section">
+        <!-- Customer Management Content -->
+      </section>
+      
+      <section id="reports" class="dashboard-section">
+        <!-- Reports Content -->
+      </section>
+      
+      <section id="settings" class="dashboard-section">
+        <!-- Settings Content -->
+      </section>
+
+
+      
+      <!-- Add this to your HTML (after the delete modal) -->
+<!-- Add Van Modal -->
+<div class="van-modal" id="add-van-modal">
+    <div class="van-modal-content">
+      <div class="van-modal-header">
+        <h3 class="van-modal-title">Add New Van</h3>
+        <button class="close-van-modal">&times;</button>
+      </div>
+      <form id="add-van-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="add-van-id">Van ID</label>
+            <input type="text" id="add-van-id" placeholder="VAN001" required>
+          </div>
+          <div class="form-group">
+            <label for="add-van-plate">License Plate</label>
+            <input type="text" id="add-van-plate" placeholder="ABC 1234" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="add-van-model">Model</label>
+            <input type="text" id="add-van-model" placeholder="Toyota HiAce" required>
+          </div>
+          <div class="form-group">
+            <label for="add-van-capacity">Passenger Capacity</label>
+            <input type="number" id="add-van-capacity" placeholder="12" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="add-van-status">Status</label>
+            <select id="add-van-status" required>
+              <option value="active">Active</option>
+              <option value="maintenance">Maintenance</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="add-van-driver">Assigned Driver</label>
+            <input type="text" id="add-van-driver" placeholder="Driver Name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="add-van-notes">Notes</label>
+          <textarea id="add-van-notes" rows="3" placeholder="Any special notes..."></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Add Van
+          </button>
+          <button type="button" class="btn btn-secondary" id="cancel-add-van">
+            <i class="fas fa-times"></i> Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Edit Van Modal -->
+  <div class="van-modal" id="edit-van-modal">
+    <div class="van-modal-content">
+      <div class="van-modal-header">
+        <h3 class="van-modal-title">Edit Van</h3>
+        <button class="close-van-modal">&times;</button>
+      </div>
+      <form id="edit-van-form">
+        <input type="hidden" id="edit-van-id">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="edit-van-id-display">Van ID</label>
+            <input type="text" id="edit-van-id-display" disabled>
+          </div>
+          <div class="form-group">
+            <label for="edit-van-plate">License Plate</label>
+            <input type="text" id="edit-van-plate" placeholder="ABC 1234" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="edit-van-model">Model</label>
+            <input type="text" id="edit-van-model" placeholder="Toyota HiAce" required>
+          </div>
+          <div class="form-group">
+            <label for="edit-van-capacity">Passenger Capacity</label>
+            <input type="number" id="edit-van-capacity" placeholder="12" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="edit-van-status">Status</label>
+            <select id="edit-van-status" required>
+              <option value="active">Active</option>
+              <option value="maintenance">Maintenance</option>
+              <option value="inactive">Inactive</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="edit-van-driver">Assigned Driver</label>
+            <input type="text" id="edit-van-driver" placeholder="Driver Name">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="edit-van-notes">Notes</label>
+          <textarea id="edit-van-notes" rows="3" placeholder="Any special notes..."></textarea>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-save"></i> Save Changes
+          </button>
+          <button type="button" class="btn btn-secondary" id="cancel-edit-van">
+            <i class="fas fa-times"></i> Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+    </main>
+  </div>
+
+  <div class="modal" id="delete-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Confirm Deletion</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete this van? This action cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="cancel-delete">Cancel</button>
+        <button class="btn btn-danger" id="confirm-delete">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="managerAll.js"> </script>
+</body>
+</html>

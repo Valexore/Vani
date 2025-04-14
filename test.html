@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Power Section</title>
+    <style>
+      /* Figma Styles of your File */
+      :root {
+          /* Colors */
+          --frame-1: #c5abab;
+        
+          /* Fonts */
+          /* Effects */
+        }
+        
+      .homepage,
+      .homepage * {
+        box-sizing: border-box;
+      }
+      .homepage {
+        background: #ffffff;
+        height: 3170px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero {
+        background: linear-gradient(
+            180deg,
+            rgba(2, 48, 71, 0.82) 0.4807692486792803%,
+            rgba(102, 110, 253, 0) 53.36538553237915%,
+            rgba(2, 48, 71, 0.82) 100%
+          ),
+          linear-gradient(to left, #d5d5d5, #d5d5d5);
+        width: 1366px;
+        height: 768px;
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        overflow: hidden;
+      }
+      .heading {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 300px;
+        position: absolute;
+        left: 132px;
+        top: 275px;
+      }
+      .heading-2 {
+        color: #ffffff;
+        text-align: left;
+        font-family: "Raleway-Black", sans-serif;
+        font-size: 60px;
+        line-height: 120%;
+        font-weight: 900;
+        position: relative;
+        flex: 1;
+      }
+      .heading2 {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 300px;
+        position: absolute;
+        left: 132px;
+        top: 451px;
+      }
+      .heading-22 {
+        color: #ffffff;
+        text-align: left;
+        font-family: "Raleway-Black", sans-serif;
+        font-size: 16px;
+        line-height: 120%;
+        font-weight: 900;
+        position: relative;
+        flex: 1;
+      }
+      .dsadasd-500-x-500-px-removebg-preview-1 {
+        width: 641px;
+        height: 641px;
+        position: absolute;
+        left: 597px;
+        top: 139px;
+        object-fit: cover;
+        aspect-ratio: 1;
+      }
+      .button {
+        background: #023047;
+        border-radius: 24px;
+        padding: 12px 32px 12px 32px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: absolute;
+        left: 136px;
+        top: 569px;
+      }
+      .button-text {
+        color: #ffffff;
+        text-align: left;
+        font-family: "Poppins-Bold", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        position: relative;
+      }
+      .menu-bar {
+        background: linear-gradient(
+          90deg,
+          rgba(2, 48, 71, 0.14) 0%,
+          rgba(2, 48, 71, 0.21) 37.01923191547394%,
+          rgba(2, 48, 71, 0.19) 55.288463830947876%,
+          rgba(2, 48, 71, 0) 84.13461446762085%,
+          rgba(2, 48, 71, 0.35) 100%
+        );
+        border-radius: 13px;
+        width: 1190px;
+        height: 101px;
+        position: absolute;
+        left: 88px;
+        top: 49px;
+        overflow: hidden;
+      }
+      .button2 {
+        background: #023047;
+        border-radius: 24px;
+        padding: 12px 32px 12px 32px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: absolute;
+        left: calc(50% - -274.5px);
+        top: 26px;
+      }
+      .sdddd {
+        color: #ffffff;
+        text-align: left;
+        font-family: "Poppins-Bold", sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+        position: relative;
+      }
+      .button3 {
+        background: #023047;
+        border-radius: 24px;
+        padding: 12px 32px 12px 32px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: center;
+        justify-content: flex-start;
+        position: absolute;
+        left: calc(50% - -411.5px);
+        top: 26px;
+      }
+      .fare {
+        color: #ffffff;
+        text-align: left;
+        font-family: "Rowdies-Bold", sans-serif;
+        font-size: 30px;
+        line-height: 120%;
+        font-weight: 700;
+        position: absolute;
+        left: 68px;
+        top: 32px;
+      }
+      .routes {
+        color: #ffffff;
+        text-align: left;
+        font-family: "Rowdies-Bold", sans-serif;
+        font-size: 30px;
+        line-height: 120%;
+        font-weight: 700;
+        position: absolute;
+        left: 182px;
+        top: 32px;
+      }
+      .orginazation {
+        color: #ffffff;
+        text-align: left;
+        font-family: "Rowdies-Bold", sans-serif;
+        font-size: 30px;
+        line-height: 120%;
+        font-weight: 700;
+        position: absolute;
+        left: 341px;
+        top: 33px;
+      }
+      .contact {
+        color: #ffffff;
+        text-align: left;
+        font-family: "Rowdies-Bold", sans-serif;
+        font-size: 30px;
+        line-height: 120%;
+        font-weight: 700;
+        position: absolute;
+        left: 622px;
+        top: 32px;
+      }
+      .frame-3 {
+        background: #ffffff;
+        width: 1366px;
+        height: 768px;
+        position: absolute;
+        left: 0px;
+        top: 768px;
+        overflow: hidden;
+      }
+      .testimonials-section {
+        position: absolute;
+        inset: 0;
+      }
+      .testimonials-right {
+        width: 559px;
+        height: 377px;
+        position: static;
+      }
+      .heading3 {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 559px;
+        position: absolute;
+        left: 763px;
+        top: 187px;
+      }
+      .heading-23 {
+        color: #023047;
+        text-align: left;
+        font-family: "Raleway-Black", sans-serif;
+        font-size: 60px;
+        line-height: 120%;
+        font-weight: 900;
+        position: relative;
+        flex: 1;
+      }
+      .wahahahaha-tas-ikaw-hindi {
+        color: #023047;
+        text-align: left;
+        font-family: "Poppins-Regular", sans-serif;
+        font-size: 16px;
+        line-height: 200%;
+        font-weight: 400;
+        position: absolute;
+        left: 764px;
+        top: 347px;
+        width: 558px;
+      }
+      .button4 {
+        background: #023047;
+        border-radius: 24px;
+        padding: 16px 32px 16px 32px;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        position: absolute;
+        left: 763px;
+        top: 505px;
+      }
+      .button-text2 {
+        color: #ffffff;
+        text-align: left;
+        font-family: "Poppins-Bold", sans-serif;
+        font-size: 18px;
+        font-weight: 700;
+        position: relative;
+      }
+      .testimonials-left {
+        position: absolute;
+        inset: 0;
+      }
+      .testimonial {
+        background: #ffffff;
+        border-radius: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 442px;
+        position: absolute;
+        left: 114px;
+        top: 419px;
+        box-shadow: 0px 9px 36px 0px rgba(0, 0, 0, 0.2);
+      }
+      .name-image {
+        padding: 0px 32px 0px 32px;
+        display: flex;
+        flex-direction: row;
+        gap: 106px;
+        align-items: center;
+        justify-content: flex-start;
+        align-self: stretch;
+        flex-shrink: 0;
+        position: relative;
+      }
+      .testimonial-name {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex: 1;
+        position: relative;
+      }
+      .jane-cooper {
+        color: #023047;
+        text-align: left;
+        font-family: "Raleway-Black", sans-serif;
+        font-size: 24px;
+        line-height: 120%;
+        font-weight: 900;
+        position: relative;
+      }
+      .developer-sony {
+        color: #023047;
+        text-align: left;
+        font-family: "Raleway-Regular", sans-serif;
+        font-size: 18px;
+        line-height: 120%;
+        font-weight: 400;
+        position: relative;
+      }
+      .testimonial-image {
+        padding: 0px 0px 24px 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-shrink: 0;
+        height: 120px;
+        position: relative;
+      }
+      .ellipse-1 {
+        border-radius: 50%;
+        flex-shrink: 0;
+        width: 120px;
+        height: 120px;
+        position: relative;
+        object-fit: cover;
+      }
+      .testimonial2 {
+        background: #ffffff;
+        border-radius: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 442px;
+        position: absolute;
+        left: 256px;
+        top: 268px;
+        box-shadow: 0px 9px 36px 0px rgba(0, 0, 0, 0.2);
+      }
+      .testimonial3 {
+        background: #ffffff;
+        border-radius: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 442px;
+        position: absolute;
+        left: 240px;
+        top: 570px;
+        box-shadow: 0px 9px 36px 0px rgba(0, 0, 0, 0.2);
+      }
+      .testimonial4 {
+        background: #ffffff;
+        border-radius: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 0px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        width: 442px;
+        position: absolute;
+        left: 114px;
+        top: 117px;
+        box-shadow: 0px 9px 36px 0px rgba(0, 0, 0, 0.2);
+      }
+      .frame-4 {
+        background: linear-gradient(
+            0deg,
+            rgba(2, 48, 71, 0.73) 0%,
+            rgba(102, 110, 253, 0.37) 55.000001192092896%,
+            rgba(2, 48, 71, 0.73) 100%
+          ),
+          linear-gradient(to left, #ffffff, #ffffff);
+        width: 1366px;
+        height: 1153px;
+        position: absolute;
+        left: 0px;
+        top: 1536px;
+        overflow: hidden;
+      }
+    </style>
+</head>
+<body>
+    <div class="homepage">
+        <div class="hero">
+          <div class="heading">
+            <div class="heading-2">MASAYA KABA?</div>
+          </div>
+          <div class="heading2">
+            <div class="heading-22">
+              Minsan kailangan nalang talaga, kase what if masaya na din siya...
+            </div>
+          </div>
+          <img
+            class="dsadasd-500-x-500-px-removebg-preview-1"
+            src="dsadasd-500-x-500-px-removebg-preview-10.png"
+            alt="Decorative image"
+          />
+          <div class="button">
+            <div class="button-text">Tara na!</div>
+          </div>
+          <div class="menu-bar">
+            <div class="button2">
+              <div class="sdddd">SIGN IN</div>
+            </div>
+            <div class="button3">
+              <div class="button-text">SIGN UP</div>
+            </div>
+            <div class="fare">FARE</div>
+            <div class="routes">ROUTES</div>
+            <div class="orginazation">ORGINAZATION</div>
+            <div class="contact">CONTACT</div>
+          </div>
+        </div>
+        <div class="frame-3">
+          <div class="testimonials-right">
+            <div class="heading3">
+              <div class="heading-23">MISS MONA BA?</div>
+            </div>
+            <div class="wahahahaha-tas-ikaw-hindi">WAHAHAHAHA TAS IKAW HINDI :(</div>
+            <div class="button4">
+              <div class="button-text2">Learn More</div>
+            </div>
+          </div>
+          <div class="testimonial">
+            <div class="name-image">
+              <div class="testimonial-name">
+                <div class="jane-cooper">₱ 320</div>
+                <div class="developer-sony">SENIOR FARE</div>
+              </div>
+              <div class="testimonial-image">
+                <img class="ellipse-1" src="ellipse-10.png" alt="Senior fare icon"/>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial2">
+            <div class="name-image">
+              <div class="testimonial-name">
+                <div class="jane-cooper">₱ 320</div>
+                <div class="developer-sony">STUDENT FARE</div>
+              </div>
+              <div class="testimonial-image">
+                <img class="ellipse-1" src="ellipse-11.png" alt="Student fare icon"/>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial3">
+            <div class="name-image">
+              <div class="testimonial-name">
+                <div class="jane-cooper">₱ 320</div>
+                <div class="developer-sony">PWD (Persons with Disabilities)</div>
+              </div>
+              <div class="testimonial-image">
+                <img class="ellipse-1" src="ellipse-12.png" alt="PWD fare icon"/>
+              </div>
+            </div>
+          </div>
+          <div class="testimonial4">
+            <div class="name-image">
+              <div class="testimonial-name">
+                <div class="jane-cooper">₱ 350</div>
+                <div class="developer-sony">AVARAGE FARE</div>
+              </div>
+              <div class="testimonial-image">
+                <img class="ellipse-1" src="ellipse-13.png" alt="Average fare icon"/>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="frame-4"></div>
+      </div>
+</body>
+</html>

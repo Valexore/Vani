@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="img/knorr.png" type="image/png" >  
+  <title>Customer Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="costumer.css">
+  <link rel="stylesheet" href="chatbotandWeather.css">
+  <link rel="stylesheet" href="scrollStyle.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <h1><a href="index.html"><img src="img/VanTastic.png" alt="Van Terminal System"></a></h1>
+    </div>
+    <div class="menu-toggle" id="mobile-menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+    <nav id="nav-menu">
+      <ul>
+        <li><a href="#ticket-ordering">Order Now!</a></li>
+        <li><a href="#weather">Weather & Traffic</a></li>
+        <li><a href="#ticket-history">History & Rate</a></li>
+        <li class="logout-item">
+          <button id="login-btn" class="login"><i class="fas fa-sign-out-alt"></i> Log Out</button>
+        </li>
+        <li><button id="demo-popup-btn" class="btn" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
+          Show Ticket Popup (Demo)
+        </button>
+      </li>
+      </ul>
+      
+    </nav>
+    
+  </header>
+
+ <!-- Ticket Ordering Section -->
+ <section id="ticket-ordering" class="section" data-animate="animate-fadeInUp">
+  <h2>Order Your Ticket</h2>
+  <p class="section-description">
+    Book your trip with ease! Select your terminal, destination, and travel date. Choose your passenger type to see the fare.
+  </p>
+  <form id="ticketForm" >
+    <div class="form-container">
+      <div class="form-inputs">
+        <div class="form-group">
+          <label for="terminal">Select Terminal:</label>
+          <select id="terminal" name="terminal" required>
+            <option value="">-- Select Terminal --</option>
+            <option value="manila">Manila Terminal</option>
+            <option value="quezon_city">Quezon City Terminal</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="destination">Select Destination:</label>
+          <select id="destination" name="destination" required>
+            <option value="">-- Select Destination --</option>
+            <option value="quezon_city">Quezon City</option>
+            <option value="sta_mesa">Sta. Mesa</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="date">Select Date:</label>
+          <input type="date" id="date" name="date" required>
+        </div>
+      </div>
+    </div>
+    <div class="button-container">
+      <button type="submit" class="btn">Order Ticket</button>
+    </div>
+    
+  </form>
+</section>
+
+<!-- Weather and Traffic Section -->
+<section id="weather" class="section">
+  <h2>Weather and Traffic Update</h2>
+  <div class="current-time">
+    <p>Current Time in Philippines: <span id="philippines-time">Loading...</span></p>
+  </div>
+  <div class="weather-content">
+    <div class="weather-card">
+      <h3>Manila</h3>
+      <p class="weather-condition">Sunny</p>
+      <p class="weather-temperature">32°C</p>
+    </div>
+    <div class="weather-card">
+      <h3>Infanta</h3>
+      <p class="weather-condition">Partly Cloudy</p>
+      <p class="weather-temperature">28°C</p>
+    </div>
+  </div>
+  <div class="traffic-content">
+    <div class="traffic-card">
+      <h3>Manila to Infanta</h3>
+      <p class="traffic-condition">Moderate Traffic</p>
+      <p class="traffic-delay">Expected Delay: 15 mins</p>
+    </div>
+    <div class="traffic-card">
+      <h3>Infanta to Manila</h3>
+      <p class="traffic-condition">Light Traffic</p>
+      <p class="traffic-delay">No Delays</p>
+    </div>
+  </div>
+</section>
+
+  </section>
+
+
+ <!-- Chatbot Section -->
+<div class="chatbot">
+  <button id="chatbot-toggle" class="chatbot-btn">
+    <i class="fas fa-comments"></i>
+  </button>
+  <div class="chatbot-window">
+    <div class="chatbot-header">
+      <h3>Vancy</h3>
+      <button id="chatbot-close" class="close-btn">&times;</button>
+    </div>
+    <div class="chatbot-body">
+      <div class="chatbot-messages">
+        <div class="message bot-message">
+          <div class="avatar">
+            <img src="img/logo.png" alt="Bot Avatar">
+          </div>
+          <div class="message-content">
+            <p>Hello! 👋 How can I assist you today?</p>
+          </div>
+        </div>
+      </div>
+      <div class="chatbot-input-area">
+        <input type="text" id="chatbot-input" placeholder="Type your message here..." autocomplete="off">
+        <button id="chatbot-send">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Ticket History Section -->
+<section id="ticket-history" class="section" data-animate="animate-fadeIn">
+  <h2>Your Ticket History</h2>
+  <p class="section-description">
+    View your past ticket orders and check the status of your upcoming trips. You can rate completed rides.
+  </p>
+  <div class="history-container">
+    <!-- Completed Ride with Rating -->
+    <div class="history-card">
+      <div class="history-header">
+        <span class="ticket-number">Ticket #VT2023-0015</span>
+        <span class="ticket-date">June 15, 2023</span>
+      </div>
+      <div class="history-details">
+        <div class="detail">
+          <span class="detail-label">From:</span>
+          <span class="detail-value">Manila Terminal</span>
+        </div>
+        <div class="detail">
+          <span class="detail-label">To:</span>
+          <span class="detail-value">Quezon City</span>
+        </div>
+        <div class="detail">
+          <span class="detail-label">Status:</span>
+          <span class="detail-value completed">Completed</span>
+        </div>
+      </div>
+      <div class="rating-section confirmed">
+        <div class="rating-display">
+          <div class="stars">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="rating-comment">"What if.. hindi may iba na?"</p>
+        </div>
+        <p class="rating-notice"><i class="fas fa-lock"></i> Rating confirmed</p>
+      </div>
+    </div>
+    
+    <!-- Completed Ride Pending Rating -->
+    <div class="history-card">
+      <div class="history-header">
+        <span class="ticket-number">Ticket #VT2023-0016</span>
+        <span class="ticket-date">June 18, 2023</span>
+      </div>
+      <div class="history-details">
+        <div class="detail">
+          <span class="detail-label">From:</span>
+          <span class="detail-value">Quezon City Terminal</span>
+        </div>
+        <div class="detail">
+          <span class="detail-label">To:</span>
+          <span class="detail-value">Sta. Mesa</span>
+        </div>
+        <div class="detail">
+          <span class="detail-label">Status:</span>
+          <span class="detail-value completed">Completed</span>
+        </div>
+      </div>
+      <div class="rating-section">
+        <h4>Rate your experience</h4>
+        <div class="star-rating">
+          <i class="far fa-star" data-rating="1"></i>
+          <i class="far fa-star" data-rating="2"></i>
+          <i class="far fa-star" data-rating="3"></i>
+          <i class="far fa-star" data-rating="4"></i>
+          <i class="far fa-star" data-rating="5"></i>
+          <span class="rating-text">Select rating</span>
+        </div>
+        <textarea class="rating-comment-input" placeholder="Share your experience (optional)"></textarea>
+        <button class="btn confirm-rating">Confirm Rating</button>
+      </div>
+    </div>
+    
+    <!-- Upcoming Ride (No Rating) -->
+    <div class="history-card" >
+      <div class="history-header">
+        <span class="ticket-number">Ticket #VT2023-0017</span>
+        <span class="ticket-date">June 20, 2023</span>
+      </div>
+      <div class="history-details">
+        <div class="detail">
+          <span class="detail-label">From:</span>
+          <span class="detail-value">Manila Terminal</span>
+        </div>
+        <div class="detail">
+          <span class="detail-label">To:</span>
+          <span class="detail-value">Quezon City</span>
+        </div>
+        <div class="detail">
+          <span class="detail-label">Status:</span>
+          <span class="detail-value upcoming">Upcoming</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Order Confirmation Popup -->
+<div id="order-confirmation" class="popup-overlay">
+  <div class="popup-content">
+    <button class="close-popup">&times;</button>
+    <div class="popup-header">
+      <h3>Your Ticket is Confirmed!</h3>
+      <p>Thank you for choosing VanTastic</p>
+    </div>
+    <div class="ticket-details">
+      <div class="ticket-info">
+        <span class="info-label">Ticket Number:</span>
+        <span class="info-value" id="popup-ticket-number">VT2023-0017</span>
+      </div>
+      <div class="ticket-info">
+        <span class="info-label">Departure Terminal:</span>
+        <span class="info-value" id="popup-terminal">Manila Terminal</span>
+      </div>
+      <div class="ticket-info">
+        <span class="info-label">Destination:</span>
+        <span class="info-value" id="popup-destination">Quezon City</span>
+      </div>
+      <div class="ticket-info">
+        <span class="info-label">Travel Date:</span>
+        <span class="info-value" id="popup-date">June 20, 2023</span>
+      </div>
+    </div>
+    <div class="van-status">
+      <h4>Van Status</h4>
+      <div class="status-box" id="status-box">
+        <div class="status-icon">
+          <i class="fas fa-van-shuttle"></i>
+        </div>
+        <div class="status-text">
+          <p class="status-message">Your van is on the way</p>
+          <p class="status-update">Estimated arrival: 15 minutes</p>
+        </div>
+      </div>
+    </div>
+    <div class="popup-actions">
+      <button class="btn secondary-btn">Print Ticket</button>
+      <button class="btn primary-btn">Save to Phone</button>
+    </div>
+  </div>
+</div>
+
+  <script src="menuxxx.js"></script>
+  <script src="chatbot.js"></script>
+  <script src="weather.js"></script>
+  <script src="scrollAnimate.js"></script>
+
+  <script>
+
+//sample only!!!    
+
+
+document.getElementById('demo-popup-btn').addEventListener('click', function() {
+  // Set sample data
+  document.getElementById('popup-ticket-number').textContent = 'VT2023-' + Math.floor(1000 + Math.random() * 9000);
+  document.getElementById('popup-terminal').textContent = 'Manila Terminal';
+  document.getElementById('popup-destination').textContent = 'Quezon City';
+  
+  // Format today's date nicely
+  const today = new Date();
+  document.getElementById('popup-date').textContent = today.toLocaleDateString('en-US', { 
+    year: 'numeric', 
+    month: 'long', 
+    day: 'numeric' 
+  });
+  
+  // Show popup
+  const orderConfirmation = document.getElementById('order-confirmation');
+  orderConfirmation.classList.add('active');
+  
+  // Simulate van status changes
+  const statusBox = document.getElementById('status-box');
+  statusBox.className = 'status-box on-the-way';
+  statusBox.querySelector('.status-message').textContent = 'Your van is on the way';
+  statusBox.querySelector('.status-update').textContent = 'Estimated arrival: 15 minutes';
+  
+  // Close popup when clicking the X button
+  document.querySelector('.close-popup').addEventListener('click', function() {
+    orderConfirmation.classList.remove('active');
+  });
+  
+  // Close popup when clicking outside
+  orderConfirmation.addEventListener('click', function(e) {
+    if (e.target === orderConfirmation) {
+      orderConfirmation.classList.remove('active');
+    }
+  });
+  
+  // Simulate van arriving after 5 seconds
+  const arrivalTimeout = setTimeout(() => {
+    statusBox.className = 'status-box arrived';
+    statusBox.querySelector('.status-message').textContent = 'Your van has arrived';
+    statusBox.querySelector('.status-update').textContent = 'Please proceed to boarding area';
+  }, 5000);
+  
+  // Clear timeout when popup is closed to prevent memory leaks
+  orderConfirmation.addEventListener('close', function() {
+    clearTimeout(arrivalTimeout);
+  });
+});
+  </script>
+</body>
+</html>
