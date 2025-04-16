@@ -32,6 +32,9 @@ const chatbotResponses = {
   "weather": "Weather updates are available in the 'Weather Update' section.",
   "support": "You can contact support by calling +1 (123) 456-7890 or emailing support@terminal.com.",
   "help": "You can contact support by calling +1 (123) 456-7890 or emailing support@terminal.com.",
+  "nalaman": "Ano yan?",
+  "kanya": "Sino?",
+  "secret": "Okay!! basta don't forget your past.",
   "contact": "You can contact support by calling +1 (123) 456-7890 or emailing support@terminal.com."
 };
 

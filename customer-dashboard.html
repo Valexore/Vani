@@ -22,56 +22,279 @@
     </div>
     <nav id="nav-menu">
       <ul>
-        <li><a href="#ticket-ordering">Order Now!</a></li>
+        <li><a href="#ticket-ordering">Book Now!</a></li>
         <li><a href="#weather">Weather & Traffic</a></li>
         <li><a href="#ticket-history">History & Rate</a></li>
         <li class="logout-item">
           <button id="login-btn" class="login"><i class="fas fa-sign-out-alt"></i> Log Out</button>
         </li>
-        <li><button id="demo-popup-btn" class="btn" style="position: fixed; bottom: 20px; right: 20px; z-index: 1000;">
-          Show Ticket Popup (Demo)
-        </button>
-      </li>
       </ul>
       
     </nav>
     
   </header>
 
- <!-- Ticket Ordering Section -->
- <section id="ticket-ordering" class="section" data-animate="animate-fadeInUp">
-  <h2>Order Your Ticket</h2>
+<!-- Ticket Ordering Section -->
+<section id="ticket-ordering" class="section" data-animate="animate-fadeInUp">
+  <h2>Book Your Ticket</h2>
   <p class="section-description">
-    Book your trip with ease! Select your terminal, destination, and travel date. Choose your passenger type to see the fare.
+    Book your trip in 3 easy steps! Select your route, add passengers and baggage, then make payment.
   </p>
-  <form id="ticketForm" >
-    <div class="form-container">
-      <div class="form-inputs">
-        <div class="form-group">
-          <label for="terminal">Select Terminal:</label>
-          <select id="terminal" name="terminal" required>
-            <option value="">-- Select Terminal --</option>
-            <option value="manila">Manila Terminal</option>
-            <option value="quezon_city">Quezon City Terminal</option>
-          </select>
+  
+  <div class="booking-steps">
+    <div class="step active" id="step-1">
+      <div class="step-number">1</div>
+      <div class="step-label">Route Details</div>
+    </div>
+    <div class="step" id="step-2">
+      <div class="step-number">2</div>
+      <div class="step-label">Passengers & Baggage</div>
+    </div>
+    <div class="step" id="step-3">
+      <div class="step-number">3</div>
+      <div class="step-label">Payment</div>
+    </div>
+  </div>
+  
+  <form id="ticketForm">
+    <!-- Step 1: Route Selection -->
+    <div class="form-section active" id="route-section">
+      <div class="form-container">
+        <div class="form-inputs">
+          <div class="form-group">
+            <label for="terminal">Select Terminal:</label>
+            <select id="terminal" name="terminal" required>
+              <option value="">-- Select Terminal --</option>
+              <option value="manila">Manila Terminal</option>
+              <option value="quezon_city">Quezon City Terminal</option>
+              <option value="sta_mesa">Sta. Mesa Terminal</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="destination">Select Destination:</label>
+            <select id="destination" name="destination" required>
+              <option value="">-- Select Destination --</option>
+              <option value="quezon_city">Quezon City</option>
+              <option value="sta_mesa">Sta. Mesa</option>
+              <option value="infanta">Infanta, Quezon</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="date">Select Date:</label>
+            <input type="date" id="date" name="date" required min="">
+          </div>
+          <div class="form-group">
+            <label for="time">Select Time:</label>
+            <select id="time" name="time" required>
+              <option value="">-- Select Time --</option>
+              <option value="06:00">6:00 AM</option>
+              <option value="08:00">8:00 AM</option>
+              <option value="10:00">10:00 AM</option>
+              <option value="12:00">12:00 PM</option>
+              <option value="14:00">2:00 PM</option>
+              <option value="16:00">4:00 PM</option>
+            </select>
+          </div>
         </div>
-        <div class="form-group">
-          <label for="destination">Select Destination:</label>
-          <select id="destination" name="destination" required>
-            <option value="">-- Select Destination --</option>
-            <option value="quezon_city">Quezon City</option>
-            <option value="sta_mesa">Sta. Mesa</option>
-          </select>
+      </div>
+      
+      <div class="form-navigation">
+        <div></div> <!-- Empty div for spacing -->
+        <button type="button" class="nav-button next" id="next-to-passengers">Next</button>
+      </div>
+    </div>
+    
+    <!-- Step 2: Passengers and Baggage -->
+    <div class="form-section" id="passengers-section">
+      <div class="form-group">
+        <label>Number of Passengers (Max: 12)</label>
+        <div class="passenger-controls">
+          <button type="button" class="control-button" id="decrease-passengers">-</button>
+          <span class="control-value" id="passenger-count">1</span>
+          <button type="button" class="control-button" id="increase-passengers">+</button>
         </div>
-        <div class="form-group">
-          <label for="date">Select Date:</label>
-          <input type="date" id="date" name="date" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Baggage (Max: 20kg per passenger)</label>
+        <div class="baggage-controls">
+          <button type="button" class="control-button" id="decrease-baggage">-</button>
+          <span class="control-value" id="baggage-count">0</span>
+          <button type="button" class="control-button" id="increase-baggage">+</button>
+        </div>
+        <p class="baggage-info">Each additional kg costs ₱10</p>
+      </div>
+      
+      <div class="booking-summary">
+        <h4>Current Summary</h4>
+        <div class="summary-item">
+          <span class="summary-label">Base Fare (1 passenger):</span>
+          <span class="summary-value">₱150.00</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Baggage (0kg):</span>
+          <span class="summary-value">₱0.00</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Service Fee:</span>
+          <span class="summary-value">₱10.00</span>
+        </div>
+        <div class="summary-total">
+          <span class="summary-label">Total:</span>
+          <span class="summary-value">₱160.00</span>
+        </div>
+      </div>
+      
+      <div class="form-navigation">
+        <button type="button" class="nav-button back" id="back-to-route">Back</button>
+        <button type="button" class="nav-button next" id="next-to-payment">Next</button>
+      </div>
+    </div>
+    
+    <!-- Step 3: Payment -->
+<div class="form-section" id="payment-section">
+  <div class="payment-container">
+    <div class="payment-header">
+      <h3>Complete Your Payment</h3>
+      <p>50% downpayment required to confirm your booking</p>
+    </div>
+    
+    <div class="payment-options">
+      <div class="payment-option selected" data-method="gcash">
+        <div class="payment-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <div class="payment-details">
+          <div class="payment-name">GCash</div>
+          <div class="payment-description">Pay directly via GCash app</div>
+        </div>
+      </div>
+      <div class="payment-option" data-method="paymaya">
+        <div class="payment-icon">
+          <i class="fas fa-wallet"></i>
+        </div>
+        <div class="payment-details">
+          <div class="payment-name">PayMaya</div>
+          <div class="payment-description">Pay using PayMaya wallet</div>
         </div>
       </div>
     </div>
-    <div class="button-container">
-      <button type="submit" class="btn">Order Ticket</button>
+    
+    <div class="discount-section">
+      <div class="discount-toggle">
+        <input type="checkbox" id="apply-discount" class="discount-checkbox">
+        <label for="apply-discount" class="discount-label">
+          Apply Senior/PWD Discount (<span class="discount-amount">₱30.00</span> off)
+        </label>
+      </div>
+      <div class="discount-note">
+        <i class="fas fa-info-circle"></i> Valid ID required upon boarding to avail discount
+      </div>
     </div>
+    
+    <div class="payment-summary">
+      <h4>Payment Summary</h4>
+      <div class="summary-row">
+        <span class="summary-label">Total Fare:</span>
+        <span class="summary-value" id="total-fare">₱160.00</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-label">Discount:</span>
+        <span class="summary-value" id="discount-amount">₱0.00</span>
+      </div>
+      <div class="summary-row">
+        <span class="summary-label">Service Fee:</span>
+        <span class="summary-value">₱10.00</span>
+      </div>
+      <div class="summary-row summary-total">
+        <span class="summary-label">Amount to Pay:</span>
+        <span class="summary-value" id="amount-to-pay">₱80.00</span>
+      </div>
+    </div>
+    
+    <button type="button" class="payment-button" id="proceed-payment">
+      <i class="fas fa-lock"></i> Proceed to Payment
+    </button>
+    
+    <div class="payment-processing">
+      <div class="spinner"></div>
+      <p>Processing your payment...</p>
+    </div>
+    
+    <div class="payment-success">
+      <div class="success-icon">
+        <i class="fas fa-check-circle"></i>
+      </div>
+      <h4>Payment Successful!</h4>
+      <p>Your booking has been confirmed.</p>
+    </div>
+    
+    <div class="payment-error">
+      <i class="fas fa-exclamation-circle"></i>
+      <p>Payment failed. Please try again or use another payment method.</p>
+    </div>
+  </div>
+  
+  <div class="form-navigation">
+    <button type="button" class="nav-button back" id="back-to-passengers">Back</button>
+    <button type="button" class="nav-button confirm" id="view-ticket" style="display: none;">
+      View Ticket
+    </button>
+  </div>
+</div>
+    
+    <!-- Confirmation Section (hidden until payment confirmed) -->
+    <div class="form-section" id="confirmation-section">
+      <div class="confirmation-message">
+        <div class="confirmation-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <h3>Payment Confirmed!</h3>
+        <p>Your ticket has been successfully booked. Thank you for choosing VanTastic!</p>
+      </div>
+      
+      <div class="booking-summary">
+        <h4>Booking Summary</h4>
+        <div class="summary-item">
+          <span class="summary-label">Ticket Number:</span>
+          <span class="summary-value">VT2023-0017</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Route:</span>
+          <span class="summary-value">Manila Terminal to Quezon City</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Date & Time:</span>
+          <span class="summary-value">June 20, 2023 at 8:00 AM</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Passengers:</span>
+          <span class="summary-value">1</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Baggage:</span>
+          <span class="summary-value">0kg</span>
+        </div>
+        <div class="summary-item">
+          <span class="summary-label">Payment Method:</span>
+          <span class="summary-value">GCash (50% downpayment)</span>
+        </div>
+        <div class="summary-total">
+          <span class="summary-label">Total Paid:</span>
+          <span class="summary-value">₱80.00</span>
+        </div>
+      </div>
+      
+      <div class="form-navigation" style="justify-content: center;">
+        <button type="button" class="nav-button confirm" id="print-ticket">
+          <i class="fas fa-print"></i> Print Ticket
+        </button>
+        <button type="button" class="nav-button next" id="save-ticket" style="margin-left: 15px;">
+          <i class="fas fa-download"></i> Save to Phone
+        </button>
+      </div>
+    </div>
+
     
   </form>
 </section>
@@ -243,109 +466,14 @@
   </div>
 </section>
 
-<!-- Order Confirmation Popup -->
-<div id="order-confirmation" class="popup-overlay">
-  <div class="popup-content">
-    <button class="close-popup">&times;</button>
-    <div class="popup-header">
-      <h3>Your Ticket is Confirmed!</h3>
-      <p>Thank you for choosing VanTastic</p>
-    </div>
-    <div class="ticket-details">
-      <div class="ticket-info">
-        <span class="info-label">Ticket Number:</span>
-        <span class="info-value" id="popup-ticket-number">VT2023-0017</span>
-      </div>
-      <div class="ticket-info">
-        <span class="info-label">Departure Terminal:</span>
-        <span class="info-value" id="popup-terminal">Manila Terminal</span>
-      </div>
-      <div class="ticket-info">
-        <span class="info-label">Destination:</span>
-        <span class="info-value" id="popup-destination">Quezon City</span>
-      </div>
-      <div class="ticket-info">
-        <span class="info-label">Travel Date:</span>
-        <span class="info-value" id="popup-date">June 20, 2023</span>
-      </div>
-    </div>
-    <div class="van-status">
-      <h4>Van Status</h4>
-      <div class="status-box" id="status-box">
-        <div class="status-icon">
-          <i class="fas fa-van-shuttle"></i>
-        </div>
-        <div class="status-text">
-          <p class="status-message">Your van is on the way</p>
-          <p class="status-update">Estimated arrival: 15 minutes</p>
-        </div>
-      </div>
-    </div>
-    <div class="popup-actions">
-      <button class="btn secondary-btn">Print Ticket</button>
-      <button class="btn primary-btn">Save to Phone</button>
-    </div>
-  </div>
-</div>
+
 
   <script src="menuxxx.js"></script>
   <script src="chatbot.js"></script>
   <script src="weather.js"></script>
   <script src="scrollAnimate.js"></script>
-
-  <script>
-
-//sample only!!!    
+  <script src="flank.js"></script>
 
 
-document.getElementById('demo-popup-btn').addEventListener('click', function() {
-  // Set sample data
-  document.getElementById('popup-ticket-number').textContent = 'VT2023-' + Math.floor(1000 + Math.random() * 9000);
-  document.getElementById('popup-terminal').textContent = 'Manila Terminal';
-  document.getElementById('popup-destination').textContent = 'Quezon City';
-  
-  // Format today's date nicely
-  const today = new Date();
-  document.getElementById('popup-date').textContent = today.toLocaleDateString('en-US', { 
-    year: 'numeric', 
-    month: 'long', 
-    day: 'numeric' 
-  });
-  
-  // Show popup
-  const orderConfirmation = document.getElementById('order-confirmation');
-  orderConfirmation.classList.add('active');
-  
-  // Simulate van status changes
-  const statusBox = document.getElementById('status-box');
-  statusBox.className = 'status-box on-the-way';
-  statusBox.querySelector('.status-message').textContent = 'Your van is on the way';
-  statusBox.querySelector('.status-update').textContent = 'Estimated arrival: 15 minutes';
-  
-  // Close popup when clicking the X button
-  document.querySelector('.close-popup').addEventListener('click', function() {
-    orderConfirmation.classList.remove('active');
-  });
-  
-  // Close popup when clicking outside
-  orderConfirmation.addEventListener('click', function(e) {
-    if (e.target === orderConfirmation) {
-      orderConfirmation.classList.remove('active');
-    }
-  });
-  
-  // Simulate van arriving after 5 seconds
-  const arrivalTimeout = setTimeout(() => {
-    statusBox.className = 'status-box arrived';
-    statusBox.querySelector('.status-message').textContent = 'Your van has arrived';
-    statusBox.querySelector('.status-update').textContent = 'Please proceed to boarding area';
-  }, 5000);
-  
-  // Clear timeout when popup is closed to prevent memory leaks
-  orderConfirmation.addEventListener('close', function() {
-    clearTimeout(arrivalTimeout);
-  });
-});
-  </script>
 </body>
 </html>

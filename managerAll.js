@@ -4,7 +4,7 @@ const vans = [
     id: "VAN001",
     plate: "ABC 1234",
     model: "Toyota HiAce",
-    capacity: 12,
+    terminal: "manila",
     status: "active",
     driver: "Juan Dela Cruz",
     maintenance: "2023-05-15",
@@ -14,7 +14,7 @@ const vans = [
     id: "VAN002",
     plate: "XYZ 5678",
     model: "Nissan Urvan",
-    capacity: 14,
+    terminal: "infanta",
     status: "maintenance",
     driver: "",
     maintenance: "2023-06-01",
@@ -28,6 +28,10 @@ const editVanModal = document.getElementById('edit-van-modal');
 const addVanForm = document.getElementById('add-van-form');
 const editVanForm = document.getElementById('edit-van-form');
 const deleteModal = document.getElementById('delete-modal');
+const vanSearchInput = document.getElementById('van-search');
+const vanStatusFilter = document.getElementById('van-status-filter');
+const terminalFilter = document.getElementById('terminal-filter');
+const resetVanFiltersBtn = document.getElementById('reset-van-filters');
 let vanToDelete = null;
 
 // Navigation between sections
@@ -93,7 +97,7 @@ addVanForm.addEventListener('submit', function(e) {
     id: document.getElementById('add-van-id').value,
     plate: document.getElementById('add-van-plate').value,
     model: document.getElementById('add-van-model').value,
-    capacity: document.getElementById('add-van-capacity').value,
+    terminal: document.getElementById('add-van-terminal').value,
     status: document.getElementById('add-van-status').value,
     driver: document.getElementById('add-van-driver').value,
     notes: document.getElementById('add-van-notes').value,
@@ -126,7 +130,7 @@ editVanForm.addEventListener('submit', function(e) {
     id: vanId,
     plate: document.getElementById('edit-van-plate').value,
     model: document.getElementById('edit-van-model').value,
-    capacity: document.getElementById('edit-van-capacity').value,
+    terminal: document.getElementById('edit-van-terminal').value,
     status: document.getElementById('edit-van-status').value,
     driver: document.getElementById('edit-van-driver').value,
     notes: document.getElementById('edit-van-notes').value
@@ -161,7 +165,7 @@ function attachEditVanListeners() {
         document.getElementById('edit-van-id-display').value = van.id;
         document.getElementById('edit-van-plate').value = van.plate;
         document.getElementById('edit-van-model').value = van.model;
-        document.getElementById('edit-van-capacity').value = van.capacity;
+        document.getElementById('edit-van-terminal').value = van.terminal;
         document.getElementById('edit-van-status').value = van.status;
         document.getElementById('edit-van-driver').value = van.driver;
         document.getElementById('edit-van-notes').value = van.notes;
@@ -214,7 +218,7 @@ function resetAddVanForm() {
   document.getElementById('add-van-id').value = '';
   document.getElementById('add-van-plate').value = '';
   document.getElementById('add-van-model').value = '';
-  document.getElementById('add-van-capacity').value = '';
+  document.getElementById('add-van-terminal').value = 'manila';
   document.getElementById('add-van-status').value = 'active';
   document.getElementById('add-van-driver').value = '';
   document.getElementById('add-van-notes').value = '';
@@ -225,7 +229,24 @@ function refreshVanTable() {
   const tbody = document.querySelector('#vans-table tbody');
   tbody.innerHTML = '';
   
-  vans.forEach(van => {
+  const searchTerm = vanSearchInput.value.toLowerCase();
+  const statusFilter = vanStatusFilter.value;
+  const terminalFilterValue = terminalFilter.value;
+  
+  const filteredVans = vans.filter(van => {
+    const matchesSearch = 
+      van.id.toLowerCase().includes(searchTerm) ||
+      van.plate.toLowerCase().includes(searchTerm) ||
+      van.model.toLowerCase().includes(searchTerm) ||
+      (van.driver && van.driver.toLowerCase().includes(searchTerm));
+    
+    const matchesStatus = statusFilter === 'all' || van.status === statusFilter;
+    const matchesTerminal = terminalFilterValue === 'all' || van.terminal === terminalFilterValue;
+    
+    return matchesSearch && matchesStatus && matchesTerminal;
+  });
+  
+  filteredVans.forEach(van => {
     const row = document.createElement('tr');
     row.setAttribute('data-van-id', van.id);
     
@@ -233,7 +254,7 @@ function refreshVanTable() {
       <td>${van.id}</td>
       <td>${van.plate}</td>
       <td>${van.model}</td>
-      <td>${van.capacity}</td>
+      <td>${van.terminal === 'manila' ? 'Manila' : 'Infanta'}</td>
       <td><span class="status-badge ${getStatusClass(van.status)}">${getStatusText(van.status)}</span></td>
       <td>${van.driver || '-'}</td>
       <td>${van.maintenance || '-'}</td>
@@ -256,13 +277,19 @@ function refreshVanTable() {
   attachDeleteVanListeners();
 }
 
+// Search and filter functionality
+vanSearchInput.addEventListener('input', refreshVanTable);
+vanStatusFilter.addEventListener('change', refreshVanTable);
+terminalFilter.addEventListener('change', refreshVanTable);
 
-  //--------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------
-  
+// Reset filters
+resetVanFiltersBtn.addEventListener('click', function() {
+  vanSearchInput.value = '';
+  vanStatusFilter.value = 'all';
+  terminalFilter.value = 'all';
+  refreshVanTable();
+});
+
 // Helper functions for status
 function getStatusClass(status) {
   switch(status) {
@@ -285,33 +312,9 @@ function getStatusText(status) {
 // Initialize the van table
 refreshVanTable();
 
-
-  //--------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------
-
 // Existing functionality
 document.getElementById('logout-btn').addEventListener('click', function() {
   if(confirm('Are you sure you want to logout?')) {
     window.location.href = 'index.html';
   }
-});
-
-
-  //--------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------
-  //--------------------------------------------------------------------------------------------------------------
-
-document.querySelector('.search-bar input').addEventListener('input', function() {
-  const searchTerm = this.value.toLowerCase();
-  const rows = document.querySelectorAll('#vans-table tbody tr');
-  
-  rows.forEach(row => {
-    const rowText = row.textContent.toLowerCase();
-    row.style.display = rowText.includes(searchTerm) ? '' : 'none';
-  });
 });

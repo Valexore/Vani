@@ -134,6 +134,32 @@
      <section id="van-management" class="dashboard-section">
         <div class="dashboard-header">
           <h2>Van Management</h2>
+          <div class="filter-controls">
+            <div class="search-bar">
+              <input type="text" id="van-search" placeholder="Search vans...">
+              <button id="search-vans"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="filter-group">
+              <label for="van-status-filter">Status:</label>
+              <select id="van-status-filter">
+                <option value="all">All Statuses</option>
+                <option value="active">Active</option>
+                <option value="maintenance">Maintenance</option>
+                <option value="inactive">Inactive</option>
+              </select>
+            </div>
+            <div class="filter-group">
+              <label for="terminal-filter">Terminal:</label>
+              <select id="terminal-filter">
+                <option value="all">All Terminals</option>
+                <option value="manila">Manila</option>
+                <option value="infanta">Infanta</option>
+              </select>
+            </div>
+            <button class="btn btn-secondary" id="reset-van-filters">
+              <i class="fas fa-sync-alt"></i> Reset
+            </button>
+          </div>
           <button class="btn btn-primary" id="add-van-btn">
             <i class="fas fa-plus"></i> Add New Van
           </button>
@@ -158,8 +184,11 @@
               <input type="text" id="van-model" placeholder="Toyota HiAce">
             </div>
             <div class="form-group">
-              <label for="van-capacity">Passenger Capacity</label>
-              <input type="number" id="van-capacity" placeholder="12">
+              <label for="van-terminal">Terminal Location</label>
+              <select id="van-terminal">
+                <option value="manila">Manila</option>
+                <option value="infanta">Infanta</option>
+              </select>
             </div>
           </div>
           <div class="form-row">
@@ -212,7 +241,7 @@
                 <th>Van ID</th>
                 <th>License Plate</th>
                 <th>Model</th>
-                <th>Capacity</th>
+                <th>Terminal</th>
                 <th>Status</th>
                 <th>Driver</th>
                 <th>Last Maintenance</th>
@@ -224,7 +253,7 @@
                 <td>VAN001</td>
                 <td>ABC 1234</td>
                 <td>Toyota HiAce</td>
-                <td>12</td>
+                <td>Manila</td>
                 <td><span class="status-badge status-active">Active</span></td>
                 <td>Juan Dela Cruz</td>
                 <td>2023-05-15</td>
@@ -243,7 +272,7 @@
                 <td>VAN002</td>
                 <td>XYZ 5678</td>
                 <td>Nissan Urvan</td>
-                <td>14</td>
+                <td>Infanta</td>
                 <td><span class="status-badge status-maintenance">Maintenance</span></td>
                 <td>-</td>
                 <td>2023-06-01</td>
@@ -303,8 +332,11 @@
             <input type="text" id="add-van-model" placeholder="Toyota HiAce" required>
           </div>
           <div class="form-group">
-            <label for="add-van-capacity">Passenger Capacity</label>
-            <input type="number" id="add-van-capacity" placeholder="12" required>
+            <label for="add-van-terminal">Terminal Location</label>
+            <select id="add-van-terminal" required>
+              <option value="manila">Manila</option>
+              <option value="infanta">Infanta</option>
+            </select>
           </div>
         </div>
         <div class="form-row">
@@ -362,8 +394,11 @@
             <input type="text" id="edit-van-model" placeholder="Toyota HiAce" required>
           </div>
           <div class="form-group">
-            <label for="edit-van-capacity">Passenger Capacity</label>
-            <input type="number" id="edit-van-capacity" placeholder="12" required>
+            <label for="edit-van-terminal">Terminal Location</label>
+            <select id="edit-van-terminal" required>
+              <option value="manila">Manila</option>
+              <option value="infanta">Infanta</option>
+            </select>
           </div>
         </div>
         <div class="form-row">
